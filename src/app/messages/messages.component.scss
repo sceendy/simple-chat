@@ -1,4 +1,4 @@
-.comments {
+.messages {
   margin-bottom: 50px;
   margin-top: 25px;
   padding: 15px;
@@ -9,7 +9,7 @@
     text-align: center;
     text-transform: uppercase;
   }
-  .comment {
+  .message {
     border-bottom: #efefef 2px solid;
     display: flex;
     flex-wrap: wrap;
@@ -23,12 +23,12 @@
   }
 }
 
-.comment__user {
+.message__user {
   font-weight: 700;
   padding-bottom: 10px;
 }
 
-.comment__date {
+.message__date {
   align-items: center;
   color: #848484;
   display: flex;
@@ -36,6 +36,6 @@
   font-size: 0.7em;
 }
 
-.comment__text {
+.message__text {
   width: 100%;
 }

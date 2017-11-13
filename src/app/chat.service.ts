@@ -25,4 +25,21 @@ export class ChatService {
     return this.http
       .get(`${this.apiUrl}/messages`);
   }
+
+  addMessage(data: any): Observable<any> {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/vnd.api+json');
+    headers.append('Accept', 'application/vnd.api+json');
+
+    data.type = 'messages';
+
+    return this.http
+      .post(
+        `${this.apiUrl}/messages`, 
+        { 
+          headers: headers, 
+          body: data
+        }
+      );
+  }
 }

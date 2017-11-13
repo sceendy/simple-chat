@@ -1,4 +1,7 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+import { ChatService } from '../chat.service';
 
 @Component({
   selector: 'app-message-input',
@@ -6,11 +9,17 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./message-input.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class MessageInputComponent implements OnInit {
 
-  constructor() { }
+export class MessageInputComponent {
+  @Output() messageAdded = new EventEmitter<boolean>();
+  private messageForm: NgForm;
+  constructor(public chatService: ChatService) { }
 
-  ngOnInit() {
+  submitMessage(newMessage) {
+    this.chatService.addMessage(newMessage.value).subscribe(data => {
+      console.log(data);
+    });
+    newMessage.reset();
+    this.messageAdded.emit(true);
   }
-
 }

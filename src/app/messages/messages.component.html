@@ -1,15 +1,17 @@
 <div class="container">
-  <div *ngIf="loading" class="comments__loading-text">Loading Comments...</div>
-  <div *ngIf="!loading" class="comments">
+  <div *ngIf="loading" class="messages__loading-text">Loading messages...</div>
+  <div *ngIf="!loading" class="messages">
     <div *ngIf="messages && messages.length === 0">
-      No Comments
+      No messages
     </div>
-    <div class="comment" *ngFor="let comment of comments">
-      <div class="comment__user">{{comment.user}}</div>
-      <div class="comment__date">
-        <i class="material-icons">access_time</i> {{comment.attributes.created_at | date }}
+    <div class="message" *ngFor="let message of messages">
+      <div class="message__user">{{message.user}}</div>
+      <div class="message__date">
+        <i class="material-icons">access_time</i> {{message.attributes.created_at | date }}
       </div>
-      <div class="comment__text">{{ comment.attributes.message }}</div>
+      <div class="message__text">{{ message.attributes.message }}</div>
     </div>
   </div>
 </div>
+
+<app-message-input (messageAdded)="updateMessages()"></app-message-input>

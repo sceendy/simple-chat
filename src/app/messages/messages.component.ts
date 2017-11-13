@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 
 import { ChatService } from '../chat.service';
+import { MessageInputComponent } from '../message-input/message-input.component';
 
 @Component({
   selector: 'app-messages',
@@ -12,15 +13,18 @@ import { ChatService } from '../chat.service';
 export class MessagesComponent implements OnInit {
   @Input() status: string;
   private loading: boolean = true;
-  private comments: Array<Object>;
+  private messages: Array<Object>;
 
   constructor(public chatService: ChatService) { }
 
   ngOnInit() {
     this.loading = this.status === 'loading';
-    this.chatService.getMessages().subscribe(response => {
-      this.comments = response.data;
-    });
+    this.updateMessages();
   }
 
+  updateMessages() {
+    return this.chatService.getMessages().subscribe(response => {
+      this.messages = response.data;
+    });
+  }
 }

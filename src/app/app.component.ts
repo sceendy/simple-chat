@@ -4,7 +4,6 @@ import { DatePipe } from '@angular/common';
 import { ChatService } from './chat.service';
 
 import { MessagesComponent } from './messages/messages.component';
-import { MessageInputComponent } from './message-input/message-input.component';
 import { NavComponent } from './nav/nav.component';
 
 @Component({
