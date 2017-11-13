@@ -21,10 +21,8 @@ export class ChatService {
     );
   }
 
-  getMessages(filterParams: Object): Observable<any> {
-    let params = new HttpParams().set('filter', JSON.stringify(filterParams));
-
+  getMessages(): Observable<any> {
     return this.http
-      .get(`${this.apiUrl}/messages`, {params});
+      .get(`${this.apiUrl}/messages`);
   }
 }

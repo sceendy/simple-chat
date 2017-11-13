@@ -1,8 +1,8 @@
 <app-nav></app-nav>
 <div class="title">
   <div class="container">
-    <h1 class="u--no-margin">User1234</h1>
-    <h2 class="u--no-margin">April 3, 2017</h2>
+    <h1 class="u--no-margin">{{username}}</h1>
+    <h2 class="u--no-margin">{{created | date }}</h2>
   </div>
 </div>
 <app-messages [status]="setMessages"></app-messages>
