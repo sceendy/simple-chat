@@ -1,0 +1,36 @@
+.comments {
+  margin-bottom: 50px;
+  margin-top: 25px;
+  padding: 15px;
+  &__loading-text {
+    color: #cecece;
+    font-size: 0.8em;
+    padding: 25px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .comment {
+    border-bottom: #efefef 2px solid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 45px;
+  }
+}
+
+.comment__user {
+  font-weight: 700;
+  padding-bottom: 10px;
+}
+
+.comment__date {
+  align-items: center;
+  color: #848484;
+  display: flex;
+  font-weight: 500;
+  font-size: 0.7em;
+}
+
+.comment__text {
+  width: 100%;
+}

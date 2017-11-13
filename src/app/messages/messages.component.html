@@ -1,3 +1,10 @@
-<p>
-  messages works!
-</p>
+<div class="container">
+  <div *ngIf="loading" class="comments__loading-text">Loading Comments...</div>
+  <div *ngIf="!loading" class="comments">
+    <div class="comment">
+      <div class="comment__user">User1234</div>
+      <div class="comment__date"><i class="material-icons">access_time</i> Apr 3, 1:22pm</div>
+      <div class="comment__text">Such a massive change in such a short time is extremely unusal.</div>
+    </div>
+  </div>
+</div>

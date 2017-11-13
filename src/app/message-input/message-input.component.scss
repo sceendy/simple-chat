@@ -1,0 +1,23 @@
+$orange-light: #F7643B;
+
+.message-form__inline {
+  display: flex;
+  padding: 15px;
+  justify-content: space-between;
+}
+
+.message-form__input {
+  border: 1px solid $orange-light;
+  border-radius: 3em;
+  margin-right: 10px;
+  padding: 15px 25px;
+  width: 100%;
+}
+
+.message-form__btn {
+  background-color: $orange-light;
+  border: 0;
+  border-radius: 3em;
+  color: #fff;
+  padding: 15px 50px;
+}
