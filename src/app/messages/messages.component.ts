@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
   selector: 'app-messages',
@@ -6,13 +6,15 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./messages.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class MessagesComponent implements OnInit {
+  @Input() status: string;
   private loading: boolean = true;
 
   constructor() { }
 
   ngOnInit() {
-    this.loading = false;
+    this.loading = this.status === 'loading';
   }
 
 }
