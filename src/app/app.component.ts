@@ -20,10 +20,12 @@ export class AppComponent implements OnInit {
   constructor(public chatService: ChatService) {}
 
   ngOnInit() {
-    this.chatService.createSession().subscribe(session => {
-      this.username = session['included'][0]['attributes'].username;
-      this.created = session['data']['attributes']['created_at'];
-      this.setMessages = true;
-    });
+    this.chatService
+      .createSession()
+      .subscribe(session => {
+        this.username = session['included'][0]['attributes'].username;
+        this.created = session['data']['attributes']['created_at'];
+        this.setMessages = true;
+      });
   }
 }

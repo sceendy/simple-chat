@@ -23,8 +23,10 @@ export class MessagesComponent implements OnInit {
   }
 
   updateMessages() {
-    return this.chatService.getMessages().subscribe(response => {
-      this.messages = response.data;
-    });
+    return this.chatService
+      .getMessages()
+      .subscribe(response => {
+        this.messages = response.data;
+      });
   }
 }

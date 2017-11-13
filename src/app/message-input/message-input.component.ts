@@ -13,12 +13,15 @@ import { ChatService } from '../chat.service';
 export class MessageInputComponent {
   @Output() messageAdded = new EventEmitter<boolean>();
   private messageForm: NgForm;
+
   constructor(public chatService: ChatService) { }
 
   submitMessage(newMessage) {
-    this.chatService.addMessage(newMessage.value).subscribe(data => {
-      console.log(data);
-    });
+    this.chatService
+      .addMessage(newMessage.value)
+      .subscribe(data => {
+        console.log(data);
+      });
     newMessage.reset();
     this.messageAdded.emit(true);
   }
