@@ -13,6 +13,10 @@ import { ChatService } from './chat.service';
 // VENDOR
 import { JwtModule } from '@auth0/angular-jwt';
 
+export function getAccessToken() {
+  return localStorage.getItem('id_token');
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,14 +30,13 @@ import { JwtModule } from '@auth0/angular-jwt';
     HttpClientModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => {
-          return localStorage.getItem('id_token');
-        },
-        whitelistedDomains: ['localhost:4200'] // for now
+        tokenGetter: (getAccessToken),
+        whitelistedDomains: ['localhost:4200', 'localhost:4000']
       }
     })
   ],
   providers: [ChatService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

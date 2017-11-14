@@ -12,8 +12,9 @@ import { ChatService } from '../chat.service';
 
 export class MessageInputComponent {
   @Output() messageAdded = new EventEmitter<boolean>();
-  private messageForm: NgForm;
-  private errorMessage: string;
+  public messageForm: NgForm;
+  public errorMessage: string;
+  public message: any;
 
   constructor(public chatService: ChatService) { }
 

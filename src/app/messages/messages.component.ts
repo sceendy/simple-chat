@@ -12,9 +12,9 @@ import { MessageInputComponent } from '../message-input/message-input.component'
 
 export class MessagesComponent implements OnInit {
   @Input() status: string;
-  private loading: boolean = true;
-  private errorMessage: string;
-  private messages: Array<Object>;
+  public loading: boolean = true;
+  public errorMessage: string;
+  public messages: Array<Object>;
 
   constructor(public chatService: ChatService) { }
 
@@ -28,7 +28,7 @@ export class MessagesComponent implements OnInit {
       .getMessages()
       .subscribe(
         response => this.messages = response.data,
-        error => this.errorMessage = 'Sorry, there was an error.'
+        error => this.errorMessage = 'Sorry, the following error has occurred: ' + error
       );
   }
 }
