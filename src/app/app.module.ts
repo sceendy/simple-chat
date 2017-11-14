@@ -27,7 +27,7 @@ import { JwtModule } from '@auth0/angular-jwt';
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
-          return localStorage.getItem('access_token');
+          return localStorage.getItem('id_token');
         },
         whitelistedDomains: ['localhost:4200'] // for now
       }

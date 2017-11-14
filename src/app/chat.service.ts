@@ -1,45 +1,56 @@
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ChatService {
   private apiUrl = 'https://private-e46dd-orachallenge.apiary-mock.com/api/v1';
+  public token: string;
 
-  constructor(protected http: HttpClient) { }
+  constructor(protected http: HttpClient) {}
 
   createSession() {
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/vnd.api+json');
-    headers.append('Accept', 'application/vnd.api+json');
+    const TOKEN = localStorage.getItem('id_token');
+    const HEADERS = new HttpHeaders()
+      .append('Content-Type', 'application/vnd.api+json')
+      .append('Accept', 'application/vnd.api+json');
+
+    if (TOKEN) HEADERS.append('Authorization', 'Bearer ' + TOKEN);
 
     return this.http
-      .post(
-        `${this.apiUrl}/sessions`, 
-        { "type": "sessions" }, 
-        { headers: headers }
-    );
+      .post(`${this.apiUrl}/sessions`, 
+        { "data": { "type": "sessions" }}, 
+        { headers: HEADERS }
+      );
   }
+
+  setSession(authResult) {
+    localStorage.setItem('id_token', authResult.token);
+    localStorage.setItem('expires_at', JSON.stringify(7200));
+  }       
 
   getMessages(): Observable<any> {
-    return this.http
-      .get(`${this.apiUrl}/messages`);
+    const PARAMS = new HttpParams()
+      .set('page[number]', '1')
+      .set('page[size]', '5');
+
+      return this.http
+        .get(
+          `${this.apiUrl}/messages`,
+          {
+            params: PARAMS
+          }
+      );
   }
 
-  addMessage(data: any): Observable<any> {
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/vnd.api+json');
-    headers.append('Accept', 'application/vnd.api+json');
-
-    data.type = 'messages';
+  addMessage(form: any): Observable<any> {
+    const DATA = { type: 'messages', attributes: form };
 
     return this.http
       .post(
         `${this.apiUrl}/messages`, 
-        { 
-          headers: headers, 
-          body: data
-        }
+        { data: DATA }
       );
   }
 }

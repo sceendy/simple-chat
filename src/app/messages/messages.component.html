@@ -1,5 +1,8 @@
 <div class="container">
   <div *ngIf="loading" class="messages__loading-text">Loading messages...</div>
+  <div *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
   <div *ngIf="!loading" class="messages">
     <div *ngIf="messages && messages.length === 0">
       No messages
